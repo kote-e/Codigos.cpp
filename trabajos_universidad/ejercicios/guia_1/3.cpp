@@ -7,7 +7,7 @@ int main(){
     cin >> a >> b >> c;
     mayor = a;
     if(b > mayor) mayor = b;
-    if(c > mayor) mayor = c;
+    else if(c > mayor) mayor = c;
     cout << "el mayor es: " << mayor << endl;
     return 0;
 
