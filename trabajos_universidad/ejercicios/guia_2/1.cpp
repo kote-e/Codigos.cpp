@@ -20,5 +20,4 @@ main(){
     cout << "El resultado es: " << potencia(bas, expon) << endl;
 
     return 0;
-
 }
