@@ -15,6 +15,5 @@ int main(){
     cout << "Ingrese un numero: ";
     cin >> numero;
     cout << "La suma de los numeros desde 1 hasta " << numero << " es: " << suma(numero) << endl;
-
     return 0;
 }
