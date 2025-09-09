@@ -9,6 +9,12 @@ int suma(int numero){
         return numero + suma(numero - 1);
     }
 }
+// suma (6) = 6 + suma(5) = 21
+// suma(5) = 5 + suma(4) = 15
+// suma(4) = 4 + suma(3) = 10
+// suma(3) = 3 + suma(2) = 6
+// suma(2) = 2 + suma(1) = 3
+// suma(1) = 1
 
 int main(){
     int numero;
