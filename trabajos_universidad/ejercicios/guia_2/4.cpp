@@ -8,7 +8,10 @@ int cuadrado(int numero){
     else {
         return cuadrado(numero - 1) + (1+ ((numero -1) *2));
 
-    }
+    } 
+    // 4**2= 16   1+3+5+7=16
+    // 3**2= 9    1+3+5=9
+
 
 }
 

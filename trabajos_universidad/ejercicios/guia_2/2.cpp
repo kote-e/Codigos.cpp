@@ -11,6 +11,9 @@ int cantidad_dijitos(int a){
     else {
         return 1 + cantidad_dijitos(a / 10);}
 }
+// funcion(100) = 1 + funcion(10) = 3
+// funcion(10) = 1 + funcion(1) = 2
+// funcion(1) = 1
 
 int main(){
     int numero;
