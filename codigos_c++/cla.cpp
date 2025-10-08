@@ -29,4 +29,18 @@ int main (){
     p1.ciudad = "Madrid";
     p1.saludar();
     p1.despedirse();
+
+    Persona p2; // Crear otro objeto de la clase Persona
+    cout << "Escribe el nombre de la segunda persona: ";
+    cin >>  p2.nombre;
+    cout << "Escribe la edad de la segunda persona: ";
+    cin >>  p2.edad;
+    cout << "Escribe el trabajo de la segunda persona: ";
+    cin >>  p2.trabajo;
+    cout << "Escribe la ciudad de la segunda persona: ";
+    cin >>  p2.ciudad;
+    p2.saludar();
+    p2.despedirse();
+
+    return 0;
 }
