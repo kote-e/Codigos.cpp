@@ -7,6 +7,7 @@ int main() {
 }
 
 """
+Explicación del código:
 #include <iostream> → "Incluir librería" → agrega funciones de entrada/salida (cout, cin).
 
 <iostream> significa input-output stream (flujo de entrada/salida).
