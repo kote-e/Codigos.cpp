@@ -10,7 +10,7 @@ int main() {
     
     cout << "Escribe tu nombre completo: ";
 
-getline(cin, nombre); // Lee una línea completa (con espacios)
+    getline(cin, nombre); // Lee una línea completa (con espacios)
     cout << "Hola, " << nombre << "!" << endl;
     return 0;
 }
