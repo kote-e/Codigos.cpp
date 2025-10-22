@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+// Definición de la clase para el nodo de la lista doblemente enlazada
+// Cada nodo contiene un dato entero y punteros al siguiente y al anterior nodo
+
 class lista {
     public:
     int dato;
@@ -12,12 +15,22 @@ void leer(lista* imprimir, string dir){
     if (dir == "a"){
         for (int i=1; i<4; i++){
             cout << imprimir->dato << endl;
+            imprimir = imprimir->siguiente;
+        }
+    }
+    else if (dir == "b"){
+        for (int i=1; i<4; i++){
+            cout << imprimir->dato << endl;
             imprimir = imprimir->anterior;
         }
     }
+    else{
+        cout << "direccion no valida" << endl;
+    }
+     return;
 }
 
-int main{
+int main() {
     string direccion;
     lista* nodo1 = new lista();
     lista* nodo2 = new lista();
@@ -36,7 +49,14 @@ int main{
     cout << "introduce la direccion del nodo que quieres ver (nodo1, nodo2, nodo3): ";
     cin >> direccion;
 
+    if (direccion == "a"){
+        leer(nodo1, direccion);
+    }else if (direccion == "b"){
+        leer(nodo3, direccion);}
     
-
-
+    // Liberar memoria
+    delete nodo1;
+    delete nodo2;
+    delete nodo3;
+    return 0;
 }
