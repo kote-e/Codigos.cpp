@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// Definición de la clase para el nodo de la lista doblemente enlazada
-// Cada nodo contiene un dato entero y punteros al siguiente y al anterior nodo
 
 class lista {
     public:
