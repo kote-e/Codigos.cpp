@@ -1,3 +1,10 @@
+/*  Implementa un programa que permita al usuario ingresar operaciones de texto (como
+añadir palabras) y guarde cada operación en una pila.
+2. Añade una opción para "deshacer" (pop), que elimine la última palabra ingresada.
+3. Muestra el contenido actual del texto después de cada acción.
+4. Incluye una opción para terminar el programa. */
+
+
 #include <iostream>
 #include <stack>
 using namespace std;
