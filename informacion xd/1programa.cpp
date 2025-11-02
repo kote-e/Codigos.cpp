@@ -6,7 +6,7 @@ int main() {
     return 0;
 }
 
-"""
+/*
 Explicación del código:
 #include <iostream> → "Incluir librería" → agrega funciones de entrada/salida (cout, cin).
 
@@ -30,4 +30,4 @@ endl → salto de línea y vaciado del buffer.
 return 0; → Indica que el programa terminó sin errores.
 El 0 es un código de estado estándar para "éxito".
 El punto y coma ; → indica el final de una instrucción. Cada instrucción debe terminar con ; en C++.
-"""
+*/
