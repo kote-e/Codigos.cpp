@@ -11,14 +11,15 @@ int main() {
         contador++; // aumenta en 1
     }
 
+
     // do While
     int numero;
     do {
         cout << "Ingresa un número positivo: ";
         cin >> numero;
     } while (numero <= 0);
-
     cout << "Número válido: " << numero << endl;
+
 
     // Bucle For
     for (int i = 1; i <= 5; i++) {
