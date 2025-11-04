@@ -35,7 +35,6 @@ void inorden(nodo* raiz){
     }
 }
 
-
 nodo* eliminar(nodo* raiz, int numero){
     nodo* aux;
     if (raiz == nullptr){
@@ -75,6 +74,30 @@ nodo* eliminar(nodo* raiz, int numero){
     return raiz;
 }
 
+int altura(nodo* raiz){
+    if (raiz == nullptr){
+        return 0;
+    }
+    int izquierdo = altura(raiz->izq);
+    int derecho = altura(raiz->der);
+    return max(izquierdo, derecho) + 1;
+}
+
+void liberar(nodo* raiz) {
+    if (raiz == nullptr) return;
+    liberar(raiz->izq);
+    liberar(raiz->der);
+    delete raiz;
+}
+
+int suma(nodo* raiz){
+    if (raiz == nullptr){
+        return 0;
+    }
+    return raiz->dato + suma(raiz->izq) + suma(raiz->der);
+}
+
+
 int main(){
     nodo* raiz=nullptr;
     raiz=insertar(raiz,45);
@@ -96,12 +119,13 @@ int main(){
 
     int opcion;
     do{
-        cout << "\n¿Qué quieres hacer?\n";
+        cout << "\nQue quieres hacer?\n";
         cout << "1. Eliminar un nodo\n";
-        cout << "2. Añadir un nodo\n";
-        cout << "3. Calcular altura del árbol\n";
+        cout << "2. Agregar un nodo\n";
+        cout << "3. Calcular altura del arbol\n";
         cout << "4. Mostrar recorrido inorden\n";
-        cout << "5. Salir\n";
+        cout << "5. Calcular suma de todos los nodos\n";
+        cout << "6. Salir\n";
         cin >> opcion;
 
         if (opcion == 1){
@@ -119,8 +143,8 @@ int main(){
             cout << "Nodo añadido.\n";
         }
         else if (opcion == 3){
-            // Aquí podrías implementar la función para calcular la altura del árbol
-            cout << "Funcionalidad no implementada aún.\n";
+            int h = altura(raiz);
+            cout << "La altura del árbol es: " << h << endl;
         }
         else if (opcion == 4){
             cout << "Recorrido en inorden: ";
@@ -128,7 +152,8 @@ int main(){
             cout << endl;
         }
 }
-    while (opcion != 5);
+    while (opcion != 6);
+    liberar(raiz);
 
 
     return 0;
