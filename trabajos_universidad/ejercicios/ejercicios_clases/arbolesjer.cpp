@@ -35,6 +35,46 @@ void inorden(nodo* raiz){
     }
 }
 
+
+nodo* eliminar(nodo* raiz, int numero){
+    nodo* aux;
+    if (raiz == nullptr){
+        return raiz;
+    }
+    if (numero < raiz->dato){
+        raiz->izq = eliminar(raiz->izq, numero);
+    }
+    else if (numero > raiz->dato){
+        raiz->der = eliminar(raiz->der, numero);
+    }
+    else {
+        if (raiz-> izq == nullptr && raiz->der == nullptr){
+            delete raiz;
+            return nullptr;
+        }
+        else if (raiz->izq == nullptr){
+            aux = raiz->der;
+            delete raiz;
+            return aux;
+        }
+        else if(raiz->der == nullptr){
+            aux = raiz->izq;
+            delete raiz;
+            return aux;
+        }
+        else {
+            aux = raiz->der;
+            while (aux->izq != nullptr){
+                aux = aux->izq;
+            }
+            raiz->dato = aux->dato;
+            raiz->der = eliminar(raiz->der, aux->dato);
+        }
+        
+    }
+    return raiz;
+}
+
 int main(){
     nodo* raiz=nullptr;
     raiz=insertar(raiz,45);
@@ -54,7 +94,42 @@ int main(){
     inorden(raiz);
     cout<<endl;
 
-    
+    int opcion;
+    do{
+        cout << "\n¿Qué quieres hacer?\n";
+        cout << "1. Eliminar un nodo\n";
+        cout << "2. Añadir un nodo\n";
+        cout << "3. Calcular altura del árbol\n";
+        cout << "4. Mostrar recorrido inorden\n";
+        cout << "5. Salir\n";
+        cin >> opcion;
+
+        if (opcion == 1){
+            int numero;
+            cout << "Ingrese el número a eliminar: ";
+            cin >> numero;
+            raiz = eliminar(raiz, numero);
+            cout << "Nodo eliminado.\n";
+        }
+        else if (opcion == 2){
+            int numero;
+            cout << "Ingrese el número a añadir: ";
+            cin >> numero;
+            raiz = insertar(raiz, numero);
+            cout << "Nodo añadido.\n";
+        }
+        else if (opcion == 3){
+            // Aquí podrías implementar la función para calcular la altura del árbol
+            cout << "Funcionalidad no implementada aún.\n";
+        }
+        else if (opcion == 4){
+            cout << "Recorrido en inorden: ";
+            inorden(raiz);
+            cout << endl;
+        }
+}
+    while (opcion != 5);
+
 
     return 0;
 }
