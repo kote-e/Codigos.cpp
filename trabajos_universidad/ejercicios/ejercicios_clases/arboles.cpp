@@ -39,6 +39,7 @@ void postorden(nodo* raiz){
     }
 }
 
+// SI ESTA ORDENADO COMO ARBOL BINARIO DE BUSQUEDA
 void max( nodo* raiz){
     if (raiz!=nullptr){
         max(raiz->der);
