@@ -11,10 +11,11 @@ void limpiar() {
 
 
 void desplegarAdyacencia(int matriz[8][8]) {
-    string ar[8]= {{"V1"}, {"V2"}, {"V3"}, {"V4"}, {"V5"}, {"V6"}, {"V7"}, {"V8"}};
+    string ar[8]= {{"V1"}, {"V2"}, {"V3"}, {"V4"}, {"V5"}, {"V6"}, {"V7"}, {"V8"}}; // Nombres de los vértices
     cout << "Matriz de adyacencia " << endl;
     cout<< "    V1 V2 V3 V4 V5 V6 V7 V8"<< endl;
     cout << "   -------------------------" << endl;
+
     for (int j=0; j<8; j++){
         cout<< ar[j] << "| ";
         for(int k= 0; k <8; k++ ){
@@ -25,13 +26,31 @@ void desplegarAdyacencia(int matriz[8][8]) {
     cout << endl;
 }
 
-void desplegarIncidencia() {
-    // imprimir la matriz de incidencia. Debe recibir como parámetro la matriz a imprimir.
+void desplegarIncidencia(int matrizzin[8][12]) {
+    string ar[8]= {{"V1"}, {"V2"}, {"V3"}, {"V4"}, {"V5"}, {"V6"}, {"V7"}, {"V8"}};
+    cout << "Matriz de adyacencia " << endl;
+    cout << "Matriz de incidencia "<< endl;
+    cout << "   a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12"<< endl;
+    cout << "   -----------------------------------------" << endl;
+
+    for (int j=0; j<8; j++){
+        cout<< ar[j] << "| ";
+        for(int k= 0; k <12; k++ ){
+            cout <<  matrizzin[j][k]<< "  ";
+        }
+        cout<< endl;
+    }
 }
 
-void gradoVertice() {
-    // debe desplegar el grado de un vértice entregado como parámetro a la función
-
+void gradoVertice(int mariz[8][8], int v) {
+    int grado=0;
+    for (int i=0; i<8; i++){
+        grado += mariz[v-1][i];
+    }
+    if (mariz[v-1][v-1] == 1){
+         grado++;
+    }
+    cout << "El grado del vertice " << v << " es: " << grado << endl;
 }
 
 
@@ -53,12 +72,19 @@ int main(){
         int acaesta= listaristas[i][0];      // acaesta = acaesta está conectada, creo que el nombre si es descriptivo :)
         int acatambien= listaristas[i][1];   // acatambien = acaesta también está conectada, jsjsj creo que esta también
 
+        // -1 porque los índices de las matrices empiezan en 0
         matrizad[acaesta -1][acatambien -1]=1;
         matrizad[acatambien -1][acaesta -1]=1;
 
-        matrizinc[acaesta -1][i]=1;
-        matrizinc[acatambien -1][i]=1;
+        if (acaesta == acatambien) {
+            matrizinc[acaesta-1][i] = 2;
+        } else {
+            matrizinc[acaesta][i] = 1;
+            matrizinc[acatambien][i] = 1;
+        }
     }
+
+
 
     int matrizadDirigida[vertices][vertices] = {0}; // Matriz de adyacencia dirigida
     int matrizincDirigida[vertices][aristas] = {0}; // Matriz de incidencia dirigida
@@ -66,16 +92,19 @@ int main(){
     int listaristasdirigida[5][2]= {                // si {x,y} es una arista dirigida, entonces x->y
         {3,2}, {3,6}, {6,4}, {5,7}, {7,5}
     };
+    int indices[5] = {9, 11, 5, 6, 8};              // Índices de las aristas dirigidas en la matriz de incidencia
+
 
     // Inicializar las matrices de adyacencia e incidencia dirigidas
     for (int i=0; i < 5; i++){
         int acaesta= listaristasdirigida[i][0];       // acaesta = acaesta está saliendo
-        int acatambienbien= listaristasdirigida[i][1];    // acatambienbien = acaesta también está entrando
+        int acatambienbien= listaristasdirigida[i][1];// acatambienbien = acaesta también está entrando
+        int indiceArista = indices[i];               // Índice correspondiente en la matriz de incidencia   
 
-        matrizadDirigida[acaesta -1][acatambienbien -1]=1;
+        matrizadDirigida[acaesta - 1][acatambienbien - 1] = 1;
 
-        matrizincDirigida[acaesta -1][i]=1;    // Salida
-        matrizincDirigida[acatambienbien -1][i]=-1; // Entrada
+        matrizincDirigida[acaesta -1][indiceArista]= -1;         // Salida
+        matrizincDirigida[acatambienbien -1][indiceArista]=1; // Entrada
     }
 
 
@@ -133,16 +162,19 @@ int main(){
                     desplegarAdyacencia(matrizad);
                     break;
                 case 1:
-                    desplegarIncidencia();
+                    desplegarIncidencia(matrizinc);
                     break;
                 case 2:
                     desplegarAdyacencia(matrizadDirigida);
                     break;
                 case 3:
-                    
+                    desplegarIncidencia(matrizincDirigida);
                     break;
                 case 4:
-                    gradoVertice();
+                    int vertice;
+                    cout<< "ingresa el vertice del que quieres saber su grado: ";
+                    cin>> vertice;
+                    gradoVertice(matrizad, vertice);
                     break;
                 case 5:
                     cout << "Saliendo del programa...\n";
