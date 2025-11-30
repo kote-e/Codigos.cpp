@@ -13,7 +13,7 @@ void limpiar() {
 void desplegarAdyacencia(int matriz[8][8]) {
     string ar[8]= {{"V1"}, {"V2"}, {"V3"}, {"V4"}, {"V5"}, {"V6"}, {"V7"}, {"V8"}}; // Nombres de los vértices
     cout << "Matriz de adyacencia " << endl;
-    cout<< "    V1 V2 V3 V4 V5 V6 V7 V8"<< endl;
+    cout<< "    V1 V2 V3 V4 V5 V6 V7 V8"<< endl;        // Encabezado de columnas
     cout << "   -------------------------" << endl;
 
     for (int j=0; j<8; j++){
@@ -28,9 +28,8 @@ void desplegarAdyacencia(int matriz[8][8]) {
 
 void desplegarIncidencia(int matrizzin[8][12]) {
     string ar[8]= {{"V1"}, {"V2"}, {"V3"}, {"V4"}, {"V5"}, {"V6"}, {"V7"}, {"V8"}};
-    cout << "Matriz de adyacencia " << endl;
     cout << "Matriz de incidencia "<< endl;
-    cout << "   a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12"<< endl;
+    cout << "   a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12"<< endl;    // Encabezado de columnas    
     cout << "   -----------------------------------------" << endl;
 
     for (int j=0; j<8; j++){
@@ -48,7 +47,7 @@ void gradoVertice(int mariz[8][8], int v) {
         grado += mariz[v-1][i];
     }
     if (mariz[v-1][v-1] == 1){
-         grado++;
+         grado++;                      // Si hay un lazo, se cuenta dos veces
     }
     cout << "El grado del vertice " << v << " es: " << grado << endl;
 }
@@ -79,8 +78,8 @@ int main(){
         if (acaesta == acatambien) {
             matrizinc[acaesta-1][i] = 2;
         } else {
-            matrizinc[acaesta][i] = 1;
-            matrizinc[acatambien][i] = 1;
+            matrizinc[acaesta-1][i] = 1;
+            matrizinc[acatambien-1][i] = 1;
         }
     }
 
