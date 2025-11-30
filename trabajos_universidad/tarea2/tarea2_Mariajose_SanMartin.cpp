@@ -5,6 +5,12 @@
 #include <windows.h> 
 using namespace std;
 
+
+HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+void color(int c) {
+    SetConsoleTextAttribute(h, c);
+}
+
 void limpiar() { 
     system("cls"); 
 }
@@ -12,7 +18,9 @@ void limpiar() {
 
 void desplegarAdyacencia(int matriz[8][8]) {
     string ar[8]= {{"V1"}, {"V2"}, {"V3"}, {"V4"}, {"V5"}, {"V6"}, {"V7"}, {"V8"}}; // Nombres de los vértices
-    cout << "Matriz de adyacencia " << endl;
+    color(13);
+    cout << "    Matriz de adyacencia\n";
+    color(7);
     cout<< "    V1 V2 V3 V4 V5 V6 V7 V8"<< endl;        // Encabezado de columnas
     cout << "   -------------------------" << endl;
 
@@ -28,7 +36,9 @@ void desplegarAdyacencia(int matriz[8][8]) {
 
 void desplegarIncidencia(int matrizzin[8][12]) {
     string ar[8]= {{"V1"}, {"V2"}, {"V3"}, {"V4"}, {"V5"}, {"V6"}, {"V7"}, {"V8"}};
-    cout << "Matriz de incidencia "<< endl;
+    color(13);
+    cout << "    Matriz de incidencia\n";
+    color(7);
     cout << "   a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12"<< endl;    // Encabezado de columnas    
     cout << "   -----------------------------------------" << endl;
 
@@ -124,12 +134,16 @@ int main(){
     while (true) {
 
         limpiar(); // Limpiar la pantalla antes de mostrar el menú
-
+        color(13);
         cout << "         MENU      \n\n";
+        color(7);
+
 
         for (int i = 0; i < total; i++) {
             if (i == seleccion){
-                cout << "> " << opciones[i] << endl;
+                color(11); cout << "> ";
+                color(10); cout << opciones[i] << endl;
+                color(7);
             }
             else{
                 cout << "  " << opciones[i] << endl;
@@ -143,14 +157,17 @@ int main(){
             if (tecla2 == 72) { // ↑
                 seleccion--;
                 if (seleccion < 0) seleccion = total - 1;
+                Beep(700, 30);
             }
 
             if (tecla2 == 80) { // ↓
                 seleccion++;
                 if (seleccion >= total) seleccion = 0;
+                Beep(700, 30);
             }
         }
         else if (tecla == 13) { // ENTER
+            Beep(1000, 50); 
 
 
             limpiar();
